@@ -98,6 +98,7 @@ theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
+# github_token是在Travis CI配置的key
 deploy:
   type: git 
   branch: master
