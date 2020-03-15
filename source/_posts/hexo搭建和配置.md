@@ -1,6 +1,7 @@
-建议使用这几条命令：`hexo clean` , ` hexo g` , ` hexo d` 提交到 `GitHub`
+1、建议使用这几条命令：`hexo clean` , ` hexo g` , ` hexo d` 提交到 `GitHub`
 用 `hexo s` 在本地测试
-暂时用 `Travisci` 虽然 `deploy` 成功，但是 `index.html` 是空的。
+2、暂时用 `Travisci` 虽然 `deploy` 成功，但是 `index.html` 是空的。
+3、如果上传后是空白页，要看下 主题里面的配置是否改动过。
 
 [官方网站](https://hexo.io/zh-cn/docs/)
 ### hexo安装流程
