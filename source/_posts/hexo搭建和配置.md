@@ -1,14 +1,16 @@
-## hexo 搭建
+建议使用这几条命令：`hexo clean` , ` hexo g` , ` hexo d` 提交到 `GitHub`
+用 `hexo s` 在本地测试
+暂时用 `Travisci` 虽然 `deploy` 成功，但是 `index.html` 是空的。
+
 [官方网站](https://hexo.io/zh-cn/docs/)
-### 一、hexo安装流程
+### hexo安装流程
 - 安装 [nodejs](https://nodejs.org/en/)
 
 - 安装 [git](https://git-scm.com)
 
 - 安装 hexo ` npm install -g hexo-cli `
 
---
-### 二、运行网站
+### 运行网站
 ```
 $ hexo init <folder>
 $ cd <folder>
@@ -17,13 +19,12 @@ $ npm install
 ```
 运行后的文件结构如下面所示：
 
-<img src="../images/hexo/file_struct.png" width="300" height="300">
---
-### 三、_config.yml 配置信息
+{% asset_img file_struct.png file_struct %}
+
+### _config.yml配置信息
 [配置信息](https://hexo.io/zh-cn/docs/configuration)
 
---
-### 四、hexo 创建文件（创建的.md文件就会直接显示到网站上面）
+### hexo创建文件（创建的.md文件就会直接显示到网站上面）
 - ` hexo new <filename>` 
 > 例如：`hexo new test` 该命令创建的文件会直接放在 _posts 文件夹下面，这里面的文件可以直接发布到网站上面。
 
@@ -41,22 +42,22 @@ $ npm install
 - 数据文件 `source/_data`
 > 一些需要重复使用的文件，可以通过这种方式存储。
 
---
-### 五、hexo 服务器
+- 创建新的标签页 `hexo new page [name]`
+>这种方式创建了一个二级页面
+
+### hexo服务器
 - 安装 `npm install hexo-server --save`
 
 - 启动 `hexo server`
 
 - 访问 `http://localhost:4000`
 
---
-### 六、 hexo 生成和部署
+### hexo生成和部署
 - 生成 `hexo g` 或 `hexo generate`
 
 - 部署 `hexo d` 或 `hexo deploy`
 
---
-### 七、 hexo 发布到GitHub
+### hexo发布到GitHub
 
 1、新建 [git 仓库](https://github.com/YUJINHAI2015/yujinhai2015.github.io/settings) ，命名方式：`<你的 GitHub 用户名>.github.io`
 > 例如：`https://github.com/YUJINHAI2015/yujinhai2015.github.io`
@@ -69,7 +70,7 @@ $ npm install
 > 
 > __注意: .gitignore 文件中要包含 public 一行__
 
-<img src="../images/hexo/hexo_branch.png" width="200" height="300">
+{% asset_img hexo_branch.png hexo_branch %}
 
 3、将 [Travis CI](https://github.com/marketplace/travis-ci) 添加到你的 `GitHub` 账号中
 
@@ -79,17 +80,16 @@ $ npm install
 
 6、打开 [Travis CI](https://travis-ci.com)，按照步骤打开 `setting`
 
-<img src="../images/hexo/travis_setting.png" width="300" height="300">
+{% asset_img travis_setting.png travis_setting %}
 
 7、找到 `Environment Variables` 在 `NAME` 添加 `github_token`, `VALUE` 添加从 `GitHub` 复制的 `token`, `DISPLAY VALUE IN BUILD LOG` 不打开。
 > `github_token` 是自己规定的 `key` ，在后面会继续用到。
 
-<img src="../images/hexo/travis_add_token.png">
+{% asset_img travis_add_token.png token %}
 
---
 8、在你的 `Hexo` 站点文件夹中新建一个 `.travis.yml` 文件
 
-<img src="../images/hexo/file_struct.png" width="300" height="300">
+{% asset_img file_struct.png file_struct %}
 
 9、配置 `.travis.yml` 和 `_config.yml`
 `.travis.yml` 能够实现自动部署
