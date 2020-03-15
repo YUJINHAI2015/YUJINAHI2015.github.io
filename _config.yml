@@ -102,6 +102,6 @@ deploy:
   type: git 
   branch: master
 #  repo: https://github_token@github.com/YUJINHAI2015/YUJINHAI2015.github.io.git
-  repo: git@github.com:YUJINHAI2015/yujinhai2015.github.io.git
+#  repo: git@github.com:YUJINHAI2015/yujinhai2015.github.io.git
 
 
