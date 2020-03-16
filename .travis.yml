@@ -17,7 +17,9 @@ branches:
 # tarvis生命周期执行顺序详见官网文档
 before_install:
   - npm install -g hexo-cli
-
+# Submodules
+  - git submodule update --recursive --remote --init
+  
 # Start: Build Lifecycle
 install:
   - npm install
