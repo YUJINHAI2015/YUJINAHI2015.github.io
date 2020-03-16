@@ -19,7 +19,7 @@ before_install:
 
   - npm install -g hexo-cli
 # Submodules
-  sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
   - git submodule update --recursive --remote --init
   
 # Start: Build Lifecycle
