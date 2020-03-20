@@ -611,7 +611,11 @@ local_search:
   # show top n results per article, show all results by setting to -1
   top_n_per_article: 5
 
-
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
 # ---------------------------------------------------------------
 # Tags Settings
 # ---------------------------------------------------------------
