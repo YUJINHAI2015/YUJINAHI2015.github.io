@@ -1,7 +1,3 @@
-1、建议使用这几条命令：`hexo clean` , ` hexo g` , ` hexo d` 提交到 `GitHub`
-用 `hexo s` 在本地测试
-2、暂时用 `Travisci` 虽然 `deploy` 成功，但是 `index.html` 是空的。
-3、如果上传后是空白页，要看下 主题里面的配置是否改动过。
 
 [官方网站](https://hexo.io/zh-cn/docs/)
 ### hexo安装流程
@@ -125,11 +121,15 @@ cache:
 # 指定博客源码分支，因人而异。hexo博客源码托管在独立repo则不用设置此项
 branches:
   only:
-    - hexo
+    - web
 
 # tarvis生命周期执行顺序详见官网文档
 before_install:
   - npm install -g hexo-cli
+# Submodules
+  # 这两步便是将作为 sub module 的主题下载下来
+  - git submodule init
+  - git submodule update
 
 # Start: Build Lifecycle
 install:
@@ -151,3 +151,13 @@ after_script:
 # End: Build LifeCycle
 
 ```
+
+10、配置 [next](https://github.com/iissnan/hexo-theme-next) 主题
+
+- 先`fork next`主题，不然`TravisCI`会下载不下来
+
+- `git submodule add https://github.com/你自己的仓库/hexo-theme-next.git themes/next` [submodule](https://www.jianshu.com/p/9000cd49822c)
+
+- 更改`_config.yml`中的主题
+
+
