@@ -1,6 +1,7 @@
 ---
-title: jQuery对表单的操作及更多应用
-date: 2017-05-26 12:12:57
-categories: 
-- web前端
+title: categories
+date: 2020-03-20 22:47:44
+type: "categories"
+comments: false
+
 ---

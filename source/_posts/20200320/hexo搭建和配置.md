@@ -1,3 +1,8 @@
+---
+title: hexo安装流程
+date: 2020-03-20 22:24:09
+categories: hexo
+---
 
 [官方网站](https://hexo.io/zh-cn/docs/)
 ### hexo安装流程

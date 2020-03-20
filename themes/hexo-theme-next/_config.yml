@@ -19,7 +19,7 @@ override: false
 # ---------------------------------------------------------------
 
 # To get or check favicons visit: https://realfavicongenerator.net
-# Put your favicons into `hexo-site/source/` (recommend) or `hexo-site/themes/next/source/images/` directory.
+# Put your favicons into `hexo-site/source/` (recommend) or `hexo-seite/themes/next/source/images/` directory.
 
 # Default NexT favicons placed in `hexo-site/themes/next/source/images/` directory.
 # And if you want to place your icons in `hexo-site/source/` root directory, you must remove `/images` prefix from pathes.
@@ -92,10 +92,10 @@ index_with_subtitle: false
 # Value before `||` delimeter is the target link.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
-  archives: /archives/||archive
+  #archives: /archives/||archive
   #home: /||home
   #about: /about/||user
-  tags: /tags/||tags
+  #tags: /tags/||tags
   categories: /categories/|| th
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
@@ -128,7 +128,7 @@ scheme: Gemini
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
   GitHub: https://github.com/YUJINHAI2015 || github
-  E-Mail: yujinhai2019@163.com || envelope
+  #E-Mail: yujinhai2019@163.com || envelope
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
@@ -242,9 +242,9 @@ post_wordcount:
   #description: ex. subscribe to my blog by scanning my public wechat account
 
 # Reward
-reward_comment: 不需要打赏
-wechatpay: /images/wechatpay.jpg
-alipay: /images/alipay.jpg
+#reward_comment: 不需要打赏
+#wechatpay: /images/wechatpay.jpg
+#alipay: /images/alipay.jpg
 #bitcoin: /images/bitcoin.png
 
 # Declare license on posts
@@ -604,12 +604,12 @@ algolia_search:
 # Local search
 # Dependencies: https://github.com/flashlab/hexo-generator-search
 local_search:
-  enable: false
+  enable: true
   # if auto, trigger search by changing input
   # if manual, trigger search by pressing enter key or search button
   trigger: auto
   # show top n results per article, show all results by setting to -1
-  top_n_per_article: 1
+  top_n_per_article: 5
 
 
 # ---------------------------------------------------------------
