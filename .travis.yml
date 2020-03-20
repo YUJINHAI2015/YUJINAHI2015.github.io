@@ -19,8 +19,10 @@ before_install:
 
   - npm install -g hexo-cli
 # Submodules
-  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
-  - git submodule update --recursive --remote --init
+  # 这两步便是将作为 sub module 的主题下载下来
+  - git submodule init
+  - git submodule update
+  - hexo generate
   
 # Start: Build Lifecycle
 install:
