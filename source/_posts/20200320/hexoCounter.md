@@ -1,7 +1,7 @@
 ---
 title: hexo添加阅读次数
 date: 2020-03-20 23:42:17
-categories:hexo
+categories: hexo
 ---
 
 1、登录[https://leancloud.cn]()

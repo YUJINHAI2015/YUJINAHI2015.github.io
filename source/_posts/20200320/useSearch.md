@@ -1,7 +1,7 @@
 ---
 title: useSearch
 date: 2020-03-20 23:12:09
-categores:hexo
+categories: hexo
 ---
 1、`npm install hexo-generator-searchdb --save`
 2、在主题`_config.yml` 添加
