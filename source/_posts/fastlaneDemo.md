@@ -6,6 +6,8 @@ categories: 持续构建
 
 ---
 
+## [demo 地址](https://github.com/YUJINHAI2015/FastlaneDemo/tree/master/FastlaneDemo)
+
 ## 安装：[官网](https://docs.fastlane.tools/getting-started/ios/setup/)
 - 查看是否安装成功：`fastlane --version`
 
@@ -21,6 +23,7 @@ $: touch fastlane/Fastfile
 ```
 - 在`Fastfile`文件里面输入这段语句：
 
+- `open fastlane/Fastfile `
 ```
 lane :OutputHelloWorld do
   puts "helloWorld"
