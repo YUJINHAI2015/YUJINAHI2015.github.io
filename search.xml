@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>fastlaneSnapshot</title>
+    <url>/2020/03/22/fastlaneSnapshot/</url>
+    <content><![CDATA[<p><a href="https://s0docs0fastlane0tools.icopy.site/getting-started/ios/screenshots/" target="_blank" rel="noopener">中文文档</a><br><a href="https://docs.fastlane.tools/getting-started/ios/screenshots/" target="_blank" rel="noopener">英文文档</a></p>
+<h2 id="demo-地址"><a href="#demo-地址" class="headerlink" title="demo 地址"></a><a href="https://github.com/YUJINHAI2015/FastlaneDemo/tree/master/FastlaneSnapshot" target="_blank" rel="noopener">demo 地址</a></h2><h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><ul>
+<li>xcode Version 11.3.1 (11C504)</li>
+<li>fastlane Version 2.143.0</li>
+</ul>
+<h2 id="创建一个项目-FastlaneSnapshot"><a href="#创建一个项目-FastlaneSnapshot" class="headerlink" title="创建一个项目 FastlaneSnapshot"></a>创建一个项目 <code>FastlaneSnapshot</code></h2><ul>
+<li>用<code>xcode</code>新建项目<code>FastlaneSnapshot</code></li>
+<li>用命令行进入到<code>FastlaneSnapshot</code>所在的路径，创建一个文件夹和两个空文件，运行下面命令：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$: mkdir fastlane</span><br><span class="line">$: touch fastlane&#x2F;Appfile</span><br><span class="line">$: touch fastlane&#x2F;Fastfile</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建一个-FastlaneSnapshotUITests-并按照下图操作"><a href="#创建一个-FastlaneSnapshotUITests-并按照下图操作" class="headerlink" title="创建一个 FastlaneSnapshotUITests 并按照下图操作"></a>创建一个 <code>FastlaneSnapshotUITests</code> 并按照下图操作</h2><ol>
+<li><code>$: fastlane snapshot init</code></li>
+<li>新建一个<code>FastlaneSnapshotUITests target</code></li>
+<li>拖拽<code>SnapshotHelper.swift</code> 到 <code>FastlaneSnapshotUITests</code></li>
+<li>编辑<code>FastlaneSnapshotUITests</code> 的 <code>scheme</code></li>
+<li>在 <code>setUp</code> 添加代码</li>
+</ol>
+<img src="/2020/03/22/fastlaneSnapshot/snapshotInit.png" class="" title="snapshotInit">
+
+<img src="/2020/03/22/fastlaneSnapshot/UITests_Targert.png" class="" title="UITests_Targert">
+
+<img src="/2020/03/22/fastlaneSnapshot/DrapHelper.png" class="" title="DrapHelper">
+
+<img src="/2020/03/22/fastlaneSnapshot/scheme.png" class="" title="scheme">
+
+<img src="/2020/03/22/fastlaneSnapshot/setup.png" class="" title="setup">
+
+<h2 id="运行fastlane-snapshot"><a href="#运行fastlane-snapshot" class="headerlink" title="运行fastlane snapshot"></a>运行<code>fastlane snapshot</code></h2><p>报错：<code>Exit status: 70</code>   <code>Caught error... 70</code>  – 猜测是编译版本太高了。<br>1、13.0的版本太高了，改成10.0<br>2、删掉一些不必要的代码，确保项目能够编译通过。–记得<code>build</code>一下。<br>3、在命令行中记性运行：<code>fastlane snapshot</code></p>
+<img src="/2020/03/22/fastlaneSnapshot/iosVersion.png" class="" title="iosVersion">
+
+<img src="/2020/03/22/fastlaneSnapshot/changeVersion.png" class="" title="changeVersion">
+
+<h2 id="手机型号太多了，运行会很久，我们修改一下Snapfile"><a href="#手机型号太多了，运行会很久，我们修改一下Snapfile" class="headerlink" title="手机型号太多了，运行会很久，我们修改一下Snapfile"></a>手机型号太多了，运行会很久，我们修改一下<code>Snapfile</code></h2><p><code>&amp;: open fastlane/Snapfile</code></p>
+<img src="/2020/03/22/fastlaneSnapshot/selectedDevice.png" class="" title="selectedDevice">
+
+<p>重新运行 <code>fastlane snapshot</code> 这次就快很多了。</p>
+<h2 id="fastlane-版本问题"><a href="#fastlane-版本问题" class="headerlink" title="fastlane 版本问题"></a><code>fastlane</code> 版本问题</h2><p><code>undefined method &#39;each&#39; for nil:NilClass</code> 这个错误就是 版本问题引起的。</p>
+<ul>
+<li><p>查看版本 <code>fastlane --version</code><br>发现<code>fastlane</code> 可以通过 <code>brew</code>或者<code>gem</code>按照，<a href="https://www.cnblogs.com/ayseeing/p/3610777.html" target="_blank" rel="noopener">两者区别</a>,<br>而我现在是通过<code>brew</code>安装的，版本是 2.28.3。而且一直报上面的错误，更新到最新也不行：<code>brew upgrade fastlane</code><br>现在尝试用<code>gem</code>来安装看看。</p>
+</li>
+<li><p>先卸载掉<code>brew</code>安装的：<code>brew cask uninstall fastlane</code></p>
+</li>
+<li><p>通过<code>gem</code>安装： <code>sudo gem install fastlane</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">➜  FastlaneSnapshot fastlane --version</span><br><span class="line">fastlane installation at path:</span><br><span class="line">&#x2F;Library&#x2F;Ruby&#x2F;Gems&#x2F;2.6.0&#x2F;gems&#x2F;fastlane-2.143.0&#x2F;bin&#x2F;fastlane</span><br><span class="line">-----------------------------</span><br><span class="line">[✔] 🚀 </span><br><span class="line">fastlane 2.143.0</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="参考链接：undefined-method-‘each’-for-nil-NilClass"><a href="#参考链接：undefined-method-‘each’-for-nil-NilClass" class="headerlink" title="参考链接：undefined method ‘each’ for nil:NilClass"></a>参考链接：<a href="https://github.com/fastlane/fastlane/issues/15496" target="_blank" rel="noopener">undefined method ‘each’ for nil:NilClass</a></h2>]]></content>
+      <categories>
+        <category>持续构建</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>fastlaneWithTravisCI</title>
+    <url>/2020/03/21/fastlaneWithTravisCI/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>持续构建</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>fastlane</title>
+    <url>/2020/03/21/fastlaneDemo/</url>
+    <content><![CDATA[<h2 id="demo-地址"><a href="#demo-地址" class="headerlink" title="demo 地址"></a><a href="https://github.com/YUJINHAI2015/FastlaneDemo/tree/master/FastlaneDemo" target="_blank" rel="noopener">demo 地址</a></h2><h2 id="安装：官网"><a href="#安装：官网" class="headerlink" title="安装：官网"></a>安装：<a href="https://docs.fastlane.tools/getting-started/ios/setup/" target="_blank" rel="noopener">官网</a></h2><ul>
+<li>查看是否安装成功：<code>fastlane --version</code></li>
+</ul>
+<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><ul>
+<li>用<code>xcode</code>新建项目<code>FastlaneDemo</code></li>
+<li>用命令行进入到<code>FastlaneDemo</code>所在的路径，创建一个文件夹和两个空文件，运行下面命令：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$: mkdir fastlane</span><br><span class="line">$: touch fastlane&#x2F;Appfile</span><br><span class="line">$: touch fastlane&#x2F;Fastfile</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在<code>Fastfile</code>文件里面输入这段语句：</p>
+</li>
+<li><p><code>open fastlane/Fastfile</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lane :OutputHelloWorld do</span><br><span class="line">  puts &quot;helloWorld&quot;</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li><p>在命令行中运行 <code>fastlane OutputHelloWorld</code></p>
+</li>
+</ul>
+<img src="/2020/03/21/fastlaneDemo/OutputHelloWorld.png" class="" title="output">
+
+<ul>
+<li><a href="https://docs.fastlane.tools/actions/run_tests/#parameters" target="_blank" rel="noopener">常用参数列表</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>持续构建</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>hexo添加阅读次数</title>
+    <url>/2020/03/20/hexoCounter/</url>
+    <content><![CDATA[<p>1、登录<a href="">https://leancloud.cn</a><br>2、在<code>leancloud</code>创建应该应用<br>3、在<code>leancloud</code>进入<code>存储</code>-》<code>结构化数据</code>–》<code>创建Class</code>–》<code>命名为Counter</code><br>4、在<code>leancloud</code>进入<code>设置</code>–》<code>安全中心</code>–&gt;<code>Web 安全域名</code>–》添加你的仓库发布地址<code>https://yujinhai2015.github.io</code><br>5、进入到主题的<code>_config.yml</code><br>打开 <code>leancloud_visitors</code> 和 <code>valine</code></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>useSearch</title>
+    <url>/2020/03/20/useSearch/</url>
+    <content><![CDATA[<p>1、<code>npm install hexo-generator-searchdb --save</code><br>2、在主题<code>_config.yml</code> 添加</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">path: search.xml</span><br><span class="line">field: post</span><br><span class="line">format: html</span><br><span class="line">limit: 10000</span><br></pre></td></tr></table></figure>
+<p>3、找到这个</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Local search</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>hexoCommand</title>
+    <url>/2020/03/20/hexoCommand/</url>
+    <content><![CDATA[<p><code>hexo clean</code><br><code>hexo g</code><br><code>hexo s</code><br><code>hexo d</code><br><code>hexo new filename</code><br><code>hexo new page pagename</code></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>use categories</title>
+    <url>/2020/03/20/useCategories/</url>
+    <content><![CDATA[<p>1、在<code>themes</code>的<code>_config.yml</code>里打开<code>categories</code><br>2、运行<code>hexo new page categories</code><br>3、打开 <code>categories</code>文件夹下面的<code>index.md</code>, 添加下面代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"></span><br><span class="line">title: categories</span><br><span class="line">date: 2020-03-20 22:37:45</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line"></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>4、新建文件 <code>hexo new useCategories</code><br>打开文件并添加</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2020-03-20 22:24:09</span><br><span class="line">categories: hexo use</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>hexo安装流程</title>
+    <url>/2020/03/20/hexo%E6%90%AD%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官方网站</a></p>
+<h3 id="hexo安装流程"><a href="#hexo安装流程" class="headerlink" title="hexo安装流程"></a>hexo安装流程</h3><ul>
+<li><p>安装 <a href="https://nodejs.org/en/" target="_blank" rel="noopener">nodejs</a></p>
+</li>
+<li><p>安装 <a href="https://git-scm.com" target="_blank" rel="noopener">git</a></p>
+</li>
+<li><p>安装 hexo <code>npm install -g hexo-cli</code></p>
+</li>
+</ul>
+<h3 id="运行网站"><a href="#运行网站" class="headerlink" title="运行网站"></a>运行网站</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>运行后的文件结构如下面所示：</p>
+<img src="/2020/03/20/hexo%E6%90%AD%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/file_struct.png" class="" title="file_struct">
+
+<h3 id="config-yml配置信息"><a href="#config-yml配置信息" class="headerlink" title="_config.yml配置信息"></a>_config.yml配置信息</h3><p><a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">配置信息</a></p>
+<h3 id="hexo创建文件（创建的-md文件就会直接显示到网站上面）"><a href="#hexo创建文件（创建的-md文件就会直接显示到网站上面）" class="headerlink" title="hexo创建文件（创建的.md文件就会直接显示到网站上面）"></a>hexo创建文件（创建的.md文件就会直接显示到网站上面）</h3><ul>
+<li><p><code>hexo new &lt;filename&gt;</code> </p>
+<blockquote>
+<p>例如：<code>hexo new test</code> 该命令创建的文件会直接放在 _posts 文件夹下面，这里面的文件可以直接发布到网站上面。</p>
+</blockquote>
+</li>
+<li><p><code>hexo new drafts &lt;filename&gt;</code></p>
+<blockquote>
+<p>例如：<code>hexo new drafts my_draft</code> drafts 是 hexo 的关键字，所创建的文件会放到 _drafts 文件夹下面，需要通过 <code>hexo publish &lt;filename&gt;</code> 将文件放到 _posts 里面。</p>
+</blockquote>
+</li>
+<li><p><code>hexo new &lt;folder&gt; &lt;filename&gt;</code></p>
+<blockquote>
+<p>例如： <code>hexo new my_folder my_filename</code> 这种方式创建的文件，要通过拼接的方式，才能够访问到里面的文件。</p>
+</blockquote>
+</li>
+<li><p>资源文件 <code>post_asset_folder: true</code> </p>
+<blockquote>
+<p>每次 new 一个文件，就会创建相应的资源文件夹。</p>
+<p>如果只是少量的资源文件，可以自己放到 <code>source/images</code> 里面。</p>
+</blockquote>
+</li>
+<li><p>数据文件 <code>source/_data</code></p>
+<blockquote>
+<p>一些需要重复使用的文件，可以通过这种方式存储。</p>
+</blockquote>
+</li>
+<li><p>创建新的标签页 <code>hexo new page [name]</code></p>
+<blockquote>
+<p>这种方式创建了一个二级页面</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="hexo服务器"><a href="#hexo服务器" class="headerlink" title="hexo服务器"></a>hexo服务器</h3><ul>
+<li><p>安装 <code>npm install hexo-server --save</code></p>
+</li>
+<li><p>启动 <code>hexo server</code></p>
+</li>
+<li><p>访问 <code>http://localhost:4000</code></p>
+</li>
+</ul>
+<h3 id="hexo生成和部署"><a href="#hexo生成和部署" class="headerlink" title="hexo生成和部署"></a>hexo生成和部署</h3><ul>
+<li><p>生成 <code>hexo g</code> 或 <code>hexo generate</code></p>
+</li>
+<li><p>部署 <code>hexo d</code> 或 <code>hexo deploy</code></p>
+</li>
+</ul>
+<h3 id="hexo发布到GitHub"><a href="#hexo发布到GitHub" class="headerlink" title="hexo发布到GitHub"></a>hexo发布到GitHub</h3><p>1、新建 <a href="https://github.com/YUJINHAI2015/yujinhai2015.github.io/settings" target="_blank" rel="noopener">git 仓库</a> ，命名方式：<code>&lt;你的 GitHub 用户名&gt;.github.io</code></p>
+<blockquote>
+<p>例如：<code>https://github.com/YUJINHAI2015/yujinhai2015.github.io</code></p>
+</blockquote>
+<p>2、创建两条分支，<code>master</code> 和 <code>hexo</code></p>
+<blockquote>
+<p><code>master</code> 分支放网站生成文件，编译后的文件。也就是 <code>deploy</code> 的路径。</p>
+<p><code>hexo</code> 分支放网站的源文件。也就是 <code>hexo init</code> 后的文件。</p>
+<p><strong>注意: .gitignore 文件中要包含 public 一行</strong></p>
+</blockquote>
+<img src="/2020/03/20/hexo%E6%90%AD%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/hexo_branch.png" class="" title="hexo_branch">
+
+<p>3、将 <a href="https://github.com/marketplace/travis-ci" target="_blank" rel="noopener">Travis CI</a> 添加到你的 <code>GitHub</code> 账号中</p>
+<p>4、前往 <code>GitHub</code> 的 <a href="https://github.com/settings/installations" target="_blank" rel="noopener">Applications settings</a>，配置 <code>Travis CI</code> 权限，使其能够访问你的 <code>repository</code>。</p>
+<p>5、在 <code>GitHub</code> 中新建 <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Personal Access Token</a>，只勾选 <code>repo</code>选项，然后复制 <code>Token</code> 并保存好。</p>
+<p>6、打开 <a href="https://travis-ci.com" target="_blank" rel="noopener">Travis CI</a>，按照步骤打开 <code>setting</code></p>
+<img src="/2020/03/20/hexo%E6%90%AD%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/travis_setting.png" class="" title="travis_setting">
+
+<p>7、找到 <code>Environment Variables</code> 在 <code>NAME</code> 添加 <code>github_token</code>, <code>VALUE</code> 添加从 <code>GitHub</code> 复制的 <code>token</code>, <code>DISPLAY VALUE IN BUILD LOG</code> 不打开。</p>
+<blockquote>
+<p><code>github_token</code> 是自己规定的 <code>key</code> ，在后面会继续用到。</p>
+</blockquote>
+<img src="/2020/03/20/hexo%E6%90%AD%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/travis_add_token.png" class="" title="token">
+
+<p>8、在你的 <code>Hexo</code> 站点文件夹中新建一个 <code>.travis.yml</code> 文件</p>
+<img src="/2020/03/20/hexo%E6%90%AD%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/file_struct.png" class="" title="file_struct">
+
+<p>9、配置 <code>.travis.yml</code> 和 <code>_config.yml</code><br><code>.travis.yml</code> 能够实现自动部署<br><code>_config.yml</code> 是 <code>hexo</code> 的配置文件<br>这里要特别注意yml的语法格式，一定要用空格键进行缩进，不能用Tab.</p>
+<p>打开 <code>_config.yml</code> 文件，在 <code>deploy</code> 字段中修改为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  # 提交 Git 仓库</span><br><span class="line">  type: git </span><br><span class="line">  # 分支是 master 这里放在编译后的文件</span><br><span class="line">  branch: master </span><br><span class="line">  # repo 里面有个字段 github_token 是在Travis CI 里面添加token规定的。</span><br><span class="line">  repo: https:&#x2F;&#x2F;github_token@github.com&#x2F;YUJINHAI2015&#x2F;yujinhai2015.github.io.git</span><br></pre></td></tr></table></figure>
+
+<p>打开 <code>.travis.yml</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: node_js # 设置语言</span><br><span class="line">sudo: required # 需要sudo权限</span><br><span class="line">node_js: stable # 设置相应版本</span><br><span class="line"></span><br><span class="line"># 指定缓存模块，可选。缓存可加快编译速度。</span><br><span class="line">cache:</span><br><span class="line">  directories:</span><br><span class="line">    - node_modules</span><br><span class="line"></span><br><span class="line"># 指定博客源码分支，因人而异。hexo博客源码托管在独立repo则不用设置此项</span><br><span class="line">branches:</span><br><span class="line">  only:</span><br><span class="line">    - web</span><br><span class="line"></span><br><span class="line"># tarvis生命周期执行顺序详见官网文档</span><br><span class="line">before_install:</span><br><span class="line">  - npm install -g hexo-cli</span><br><span class="line"># Submodules</span><br><span class="line">  # 这两步便是将作为 sub module 的主题下载下来</span><br><span class="line">  - git submodule init</span><br><span class="line">  - git submodule update</span><br><span class="line"></span><br><span class="line"># Start: Build Lifecycle</span><br><span class="line">install:</span><br><span class="line">  - npm install</span><br><span class="line">  - npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line">script:</span><br><span class="line">    - hexo clean # 清除</span><br><span class="line">    - hexo generate # 生成</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署</span><br><span class="line">after_script:</span><br><span class="line">  - git config user.name &quot;yujinhai&quot;</span><br><span class="line">  - git config user.email &quot;yujinhai2019@163.com&quot;</span><br><span class="line">  # 替换同目录下的_config.yml文件中gh_token字符串为travis后台刚才配置的变量，注意此处sed命令用了双引号。单引号无效！</span><br><span class="line">  - sed -i &quot;s&#x2F;github_token&#x2F;$&#123;github_token&#125;&#x2F;g&quot; .&#x2F;_config.yml</span><br><span class="line">  - hexo deploy</span><br><span class="line"># End: Build LifeCycle</span><br></pre></td></tr></table></figure>
+
+<p>10、配置 <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">next</a> 主题</p>
+<ul>
+<li><p>先<code>fork next</code>主题，不然<code>TravisCI</code>会下载不下来</p>
+</li>
+<li><p><code>git submodule add https://github.com/你自己的仓库/hexo-theme-next.git themes/next</code> <a href="https://www.jianshu.com/p/9000cd49822c" target="_blank" rel="noopener">submodule</a></p>
+</li>
+<li><p>更改<code>_config.yml</code>中的主题</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+</search>
