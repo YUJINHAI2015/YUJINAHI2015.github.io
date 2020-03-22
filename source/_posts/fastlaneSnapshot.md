@@ -11,11 +11,11 @@ categories: 持续构建
 
 ## 运行环境
 - xcode Version 11.3.1 (11C504)
-- fastlane Version
+- fastlane Version 2.143.0
 
 ## 创建一个项目 `FastlaneSnapshot`
-- 用`xcode`新建项目`FastlaneDemo`
-- 用命令行进入到`FastlaneDemo`所在的路径，创建一个文件夹和两个空文件，运行下面命令：
+- 用`xcode`新建项目`FastlaneSnapshot`
+- 用命令行进入到`FastlaneSnapshot`所在的路径，创建一个文件夹和两个空文件，运行下面命令：
 
 ```
 $: mkdir fastlane
@@ -24,12 +24,14 @@ $: touch fastlane/Fastfile
 
 ```
 
-## 初始化`snapshot`
-`fastlane snapshot init`
+## 创建一个 `FastlaneSnapshotUITests` 并按照下图操作
+1. `$: fastlane snapshot init`
+2. 新建一个`FastlaneSnapshotUITests target`
+3. 拖拽`SnapshotHelper.swift` 到 `FastlaneSnapshotUITests`
+4. 编辑`FastlaneSnapshotUITests` 的 `scheme`
+5. 在 `setUp` 添加代码
 
 {% asset_img snapshotInit.png snapshotInit %}
-
-## 创建一个 `FastlaneSnapshotUITests` 并按照下图操作
 
 {% asset_img UITests_Targert.png UITests_Targert %}
 
@@ -49,7 +51,7 @@ $: touch fastlane/Fastfile
 
 {% asset_img changeVersion.png changeVersion %}
 
-## 上面截图的手机型号太多了，运行会很久，我们修改一下`Snapfile`
+## 手机型号太多了，运行会很久，我们修改一下`Snapfile`
 
 `&: open fastlane/Snapfile `
 
@@ -78,4 +80,5 @@ fastlane installation at path:
 fastlane 2.143.0
 
 ```
-参考链接：[undefined method 'each' for nil:NilClass](https://github.com/fastlane/fastlane/issues/15496)
+
+## 参考链接：[undefined method 'each' for nil:NilClass](https://github.com/fastlane/fastlane/issues/15496)
