@@ -29,13 +29,15 @@ install:
   - npm install hexo-deployer-git --save
 
 script:
-    - git clone --depth 1 --branch=master https://github.com/YUJINHAI2015/yujinhai2015.github.io.git .deploy_git
-    - cd .deploy_git
-    - find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
-    - cd ../
-    
-    - hexo clean # 清除
-    - hexo generate # 生成
+#保留发布历史记录
+#https://e.printstacktrace.blog/hexo-git-deployer-removes-commits-history-lets-do-something-about-that/
+  - git clone --depth 1 --branch=master https://github.com/YUJINHAI2015/yujinhai2015.github.io.git .deploy_git
+  - cd .deploy_git
+  - find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
+  - cd ../
+#发布
+  - hexo clean # 清除
+  - hexo generate # 生成
 
 # 设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署
 after_script:
