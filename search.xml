@@ -4,6 +4,9 @@
     <title>cordova简单使用</title>
     <url>/2020/03/26/cordova%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[]]></content>
+      <categories>
+        <category>cordova</category>
+      </categories>
   </entry>
   <entry>
     <title>fastlaneSnapshot</title>
@@ -136,6 +139,8 @@
 
 <p>4、新建文件 <code>hexo new useCategories</code><br>打开文件并添加</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2020-03-20 22:24:09</span><br><span class="line">categories: hexo use</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>5、自动添加<code>categories</code>字段<br>打开 <code>scaffolds/post.md</code><br>添加一行<code>categories:</code></p>
 ]]></content>
       <categories>
         <category>hexo</category>
