@@ -27,3 +27,7 @@ date: 2020-03-20 22:24:09
 categories: hexo use
 ---
 ```
+
+5、自动添加`categories`字段
+打开 ` scaffolds/post.md`
+添加一行`categories:`
