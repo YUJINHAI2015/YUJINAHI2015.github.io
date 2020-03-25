@@ -29,9 +29,13 @@ install:
   - npm install hexo-deployer-git --save
 
 script:
+    - git clone --depth 1 --branch=master https://github.com/YUJINHAI2015/yujinhai2015.github.io.git .deploy_git
+    - cd .deploy_git
+    - find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
+    - cd ../
+    
     - hexo clean # 清除
     - hexo generate # 生成
-    - fastlane OutputHelloWorld #测试fastlane
 
 # 设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署
 after_script:
