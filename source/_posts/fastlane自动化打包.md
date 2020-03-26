@@ -7,7 +7,7 @@ categories: 持续构建
 ## [参考蒲公英地址](https://www.pgyer.com/doc/view/fastlane)
 ## [参考地址](https://www.jianshu.com/p/43b703b6eb45)
 
-## (demo地址)[]
+## [demo地址](https://github.com/YUJINHAI2015/FastlaneDemo/tree/master/FastlaneUpToPgyer)
 
 ## 定义lane
 ```
