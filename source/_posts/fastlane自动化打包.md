@@ -28,3 +28,20 @@ end
 `sudo gem install fastlane`
 
 2、项目需要指定 `team`
+
+3、更新profile后打包还是用旧的证书
+-  ~/资源库/MobileDevice/Provisioning Profiles 删掉多余的证书
+-  添加 `export_xcargs: "-allowProvisioningUpdates"`
+```
+lane :archive do
+
+  puts "请输入版本描述信息："
+  desc = STDIN.gets
+
+  build_app(export_method: "ad-hoc", export_xcargs: "-allowProvisioningUpdates", output_directory: "~/Desktop/outputAPI")
+  
+    
+  pgyer(api_key: "a215682d481d742271b61aabfe1baffe", user_key: "06c794bc27fbe97b626a3a21f12419f5",password: "12345678", update_description: "#{desc}")
+end
+
+```
