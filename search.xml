@@ -1,6 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>fastlaneMatch</title>
+    <url>/2020/04/02/fastlaneMatch/</url>
+    <content><![CDATA[<h2 id="想解决问题：1、能够自动下载最新的profiles文件，2、能够自动添加新的设备"><a href="#想解决问题：1、能够自动下载最新的profiles文件，2、能够自动添加新的设备" class="headerlink" title="想解决问题：1、能够自动下载最新的profiles文件，2、能够自动添加新的设备"></a>想解决问题：1、能够自动下载最新的<code>profiles</code>文件，2、能够自动添加新的设备</h2><h2 id="手动管理证书"><a href="#手动管理证书" class="headerlink" title="手动管理证书"></a>手动管理证书</h2><p>1、在苹果开发中心，下载 <code>certificate (.cer)</code>，并安装到本地<br>2、下载<code>provisioning profile (.mobileprovision)</code>，并安装到本地<br>3、勾选Xcode里面的Automatic选项，然后打包。</p>
+<h2 id="使用match管理证书"><a href="#使用match管理证书" class="headerlink" title="使用match管理证书"></a>使用<code>match</code>管理证书</h2><p>1、私有git仓库存储：<code>private keys</code> 和 <code>certificates</code><br>2、换新电脑或者多人的项目比较实用</p>
+<h2 id="使用cert和sigh管理证书"><a href="#使用cert和sigh管理证书" class="headerlink" title="使用cert和sigh管理证书"></a>使用<code>cert</code>和<code>sigh</code>管理证书</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lane :beta do</span><br><span class="line">  get_certificates           # 自动下载，要输入苹果账号</span><br><span class="line">  get_provisioning_profile   # 自动下载，要输入苹果账号</span><br><span class="line">  build_app</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<h2 id="下面重点介绍-match-方法管理证书"><a href="#下面重点介绍-match-方法管理证书" class="headerlink" title="下面重点介绍 match 方法管理证书"></a>下面重点介绍 <code>match</code> 方法管理证书</h2><p>1、<code>match</code> 插件会自动下载<code>certificates &amp; provisioning profiles</code><br>2、会自动修复过期或损坏的<code>certificates &amp; provisioning profiles</code><br>3、通过git仓库方式管理，很方便团队之间的合作<br>4、手动管理git和通过<code>match</code>管理的差别。<a href="https://codesigning.guide" target="_blank" rel="noopener">参考链接</a><br>5、手动管理，会有各种证书过期，和各种证书副本问题</p>
+<h2 id="初始化match"><a href="#初始化match" class="headerlink" title="初始化match"></a>初始化match</h2><p>1、<code>fastlane match init</code> 输入存储证书的git仓库<br>2、<code>fastlane match development</code> 自动生成并上传证书（adhoc, development, appstore, enterprise）</p>
+<ul>
+<li>输入密码，并且保存到keychain里面 <a href="https://docs.fastlane.tools/actions/match/#passphrase" target="_blank" rel="noopener">passphrase</a></li>
+<li><code>~/Library/MobileDevice/Provisioning Profiles</code> 可以查看到安装的文件</li>
+</ul>
+<p>3、在新电脑拉取证书</p>
+<ul>
+<li><code>fastlane match development</code> // 会通过苹果管理中心拉取最新证书</li>
+<li><code>fastlane match development --readonly</code> // 不会更新证书</li>
+</ul>
+<h2 id="访问控制–证书同步和分发问题"><a href="#访问控制–证书同步和分发问题" class="headerlink" title="访问控制–证书同步和分发问题"></a>访问控制–证书同步和分发问题</h2><p>1、通过<code>match</code>命令存储证书到git上面<br>2、其他开发者通过密码可以访问git仓库<br>3、其他开发者通过<code>match</code>命令就可以在git仓库获取到最新的证书，并且不能访问苹果中心<br>4、当我们自己更像git仓库是，能够确保其他开发者通过<code>match</code>获取到最新的证书<br>5、只能通过<code>fastlane match development --readonly</code> 方式访问，这样才不用通过苹果中心拉取。</p>
+<h2 id="当前需要解决的问题"><a href="#当前需要解决的问题" class="headerlink" title="当前需要解决的问题"></a>当前需要解决的问题</h2><p>1、访问git的权限<br>2、获取到证书后，解码的问题</p>
+<h2 id="持续构建"><a href="#持续构建" class="headerlink" title="持续构建"></a>持续构建</h2><p><a href="https://docs.fastlane.tools/actions/match/#passphrase" target="_blank" rel="noopener">https://docs.fastlane.tools/actions/match/#passphrase</a></p>
+<p><a href="https://docs.fastlane.tools/best-practices/continuous-integration/travis/" target="_blank" rel="noopener">https://docs.fastlane.tools/best-practices/continuous-integration/travis/</a></p>
+<p><a href="https://docs.fastlane.tools/getting-started/ios/setup/#use-a-gemfile" target="_blank" rel="noopener">https://docs.fastlane.tools/getting-started/ios/setup/#use-a-gemfile</a></p>
+<p><a href="https://docs.fastlane.tools/#metrics" target="_blank" rel="noopener">https://docs.fastlane.tools/#metrics</a>    </p>
+]]></content>
+      <categories>
+        <category>持续构建</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ruby学习第一课</title>
+    <url>/2020/03/30/ruby%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="输出helloworld"><a href="#输出helloworld" class="headerlink" title="输出helloworld"></a>输出<code>helloworld</code></h2><ul>
+<li>文件保存 <code>puts &quot;Hello, Ruby!&quot;;</code>  # put相当于print</li>
+<li>命令行输入：<code>$ ruby test.rb</code></li>
+</ul>
+<h2 id="多字符"><a href="#多字符" class="headerlink" title="多字符"></a>多字符</h2><blockquote>
+<p> EOC只是随便写的，可以用其他字符，只需保证首尾一样就行</p>
+</blockquote>
+<ul>
+<li>普通字符输出</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print &lt;&lt;EOF</span><br><span class="line">    这是第一种方式创建here document 。</span><br><span class="line">    多行字符串。</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print &lt;&lt;&#96;EOC&#96;                 # 执行命令</span><br><span class="line">    echo hi there</span><br><span class="line">    echo lo there</span><br><span class="line">    ls -al</span><br><span class="line">EOC</span><br></pre></td></tr></table></figure>
+
+<h2 id="BEGIN语句"><a href="#BEGIN语句" class="headerlink" title="BEGIN语句"></a>BEGIN语句</h2><ul>
+<li>输入</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">puts &quot;这是主 Ruby 程序&quot;</span><br><span class="line"> </span><br><span class="line">END &#123;</span><br><span class="line">   puts &quot;停止 Ruby 程序&quot;</span><br><span class="line">&#125;</span><br><span class="line">BEGIN &#123;</span><br><span class="line">   puts &quot;初始化 Ruby 程序&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>输出</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">初始化 Ruby 程序</span><br><span class="line">这是主 Ruby 程序</span><br><span class="line">停止 Ruby 程序</span><br></pre></td></tr></table></figure>
+
+<h2 id="值表示为字符串"><a href="#值表示为字符串" class="headerlink" title="值表示为字符串#{}"></a>值表示为字符串#{}</h2><ul>
+<li>相当于<code>swift</code>里面的”()”, <code>OC</code> 里面的<code>[NSString StringWithFormat....];</code></li>
+<li>输入 <code>puts &quot;相乘 : #{24*60*60}&quot;;</code></li>
+<li>输出 <code>相乘 : 86400</code></li>
+<li>输入 `name=”ruby”<br>puts “#{name}” + “ok”</li>
+<li>输出 <code>rubyok</code></li>
+</ul>
+<h2 id="类和实例"><a href="#类和实例" class="headerlink" title="类和实例"></a>类和实例</h2><ul>
+<li>类中变量规范</li>
+</ul>
+<blockquote>
+<p>局部变量：小写字母或_开头</p>
+<p>实例变量：@开头</p>
+<p>类变量：@@开头</p>
+<p>全局变量：$开头</p>
+<p>类名一定是大写开头</p>
+</blockquote>
+<ul>
+<li>输入</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Customer</span><br><span class="line">   @@no_of_customers&#x3D;0</span><br><span class="line">   def initialize(id, name, addr)</span><br><span class="line">      @cust_id&#x3D;id</span><br><span class="line">      @cust_name&#x3D;name</span><br><span class="line">      @cust_addr&#x3D;addr</span><br><span class="line">   end</span><br><span class="line">   def display_details()</span><br><span class="line">      puts &quot;Customer id #@cust_id&quot;</span><br><span class="line">      puts &quot;Customer name #@cust_name&quot;</span><br><span class="line">      puts &quot;Customer address #@cust_addr&quot;</span><br><span class="line">    end</span><br><span class="line">    def total_no_of_customers()</span><br><span class="line">       @@no_of_customers +&#x3D; 1</span><br><span class="line">       puts &quot;Total number of customers: #@@no_of_customers&quot;</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cust1&#x3D;Customer.new(&quot;1&quot;, &quot;John&quot;, &quot;Wisdom Apartments, Ludhiya&quot;)</span><br><span class="line">cust1.display_details()</span><br><span class="line">cust1.total_no_of_customers()</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
+<li>变量和类很相似</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Ruby 支持五种类型的变量。</span><br><span class="line">	一般小写字母、下划线开头：变量（Variable）。</span><br><span class="line">	$开头：全局变量（Global variable）。</span><br><span class="line">	@开头：实例变量（Instance variable）。</span><br><span class="line">	@@开头：类变量（Class variable）类变量被共享在整个继承链中</span><br><span class="line">	大写字母开头：常数（Constant）。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>ruby</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>xcodebuild学习</title>
+    <url>/2020/03/29/xcodebuild%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p><a href="https://developer.apple.com/library/archive/technotes/tn2339/_index.html" target="_blank" rel="noopener">参考地址</a></p>
+<h3 id="xctool-和xcodebuild"><a href="#xctool-和xcodebuild" class="headerlink" title="xctool 和xcodebuild"></a>xctool 和xcodebuild</h3><p>1、xctool 是一款开源软件 <code>brew install xctool</code>，本文暂时没有讨论xctool.</p>
+<p>2、xcodebuild是苹果自带的,用于编译，打包和测试。</p>
+<ul>
+<li><p>查看帮助，看下<code>xcodebuild</code>支持哪些命令<br><code>xcodebuild -help</code></p>
+<blockquote>
+<p><code>help</code>列出了两部分，一部分是命令行用到的，另一部分是<code>export.plist</code>用到<br>命令行输入：指定那个workspace，scheme,路径….<br><code>export.plist</code>：签名证书等…</p>
+</blockquote>
+</li>
+<li><p>查看项目的<code>scheme</code><br><code>xcodebuild -list -workspace TravisCIDemo.xcworkspace</code></p>
+</li>
+<li><p>编译你的项目<br><code>xcodebuild -workspace TravisCIDemo.xcworkspace -scheme TravisCIDemo build</code></p>
+</li>
+<li><p>打包你的项目<br><code>xcodebuild -workspace TravisCIDemo.xcworkspace -scheme TravisCIDemo archive</code></p>
+</li>
+<li><p>1) 打包项目到指定文件,会生成一个<code>build</code>文件</p>
+<blockquote>
+<p><code>xcodebuild -workspace TravisCIDemo.xcworkspace -scheme TravisCIDemo -archivePath build/TravisCIDemo.xcarchive archive</code></p>
+</blockquote>
+</li>
+<li><p>2) 创建一个<code>export.plist</code>文件，并添加一个字段，表示打包的类型，常用的有<code>app-store, ad-hoc, package, enterprise, development, and developer-id</code></p>
+</li>
+<li><p>3) 打包，然后就可以在<code>build</code>文件中看到api</p>
+<blockquote>
+<p><code>xcodebuild -exportArchive -archivePath build/TravisCIDemo.xcarchive -exportPath build -exportOptionsPlist export.plist</code></p>
+</blockquote>
+</li>
+</ul>
+<img src="/2020/03/29/xcodebuild%E5%AD%A6%E4%B9%A0/WX202003291.png" class="" width="1">
+
+<img src="/2020/03/29/xcodebuild%E5%AD%A6%E4%B9%A0/WX202003292.png" class="" width="2">
+
+<ul>
+<li><p>Build Products Path<br><code>xcodebuild -workspace TravisCIDemo.xcworkspace -scheme TravisCIDemo SYMROOT=&quot;/Users/yujinhai/Desktop/GitProject/travisCIDemo&quot;</code></p>
+</li>
+<li><p>Installation Build Products Location<br><code>xcodebuild -exportArchive -archivePath build/TravisCIDemo.xcarchive -exportPath build -exportOptionsPlist export.plist</code></p>
+</li>
+<li><p>UITest，id是设备的UUID<br><code>xcodebuild test -workspace MyApplication.xcworkspace -scheme iOSApp -destination &#39;platform=iOS,id=965058a1c30d845d0dcec81cd6b908650a0d701c&#39;</code></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>持续构建</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>fastlane自动化打包</title>
+    <url>/2020/03/27/fastlane%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85/</url>
+    <content><![CDATA[<h2 id="参考蒲公英地址"><a href="#参考蒲公英地址" class="headerlink" title="参考蒲公英地址"></a><a href="https://www.pgyer.com/doc/view/fastlane" target="_blank" rel="noopener">参考蒲公英地址</a></h2><h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a><a href="https://www.jianshu.com/p/43b703b6eb45" target="_blank" rel="noopener">参考地址</a></h2><h2 id="demo地址"><a href="#demo地址" class="headerlink" title="demo地址"></a><a href="https://github.com/YUJINHAI2015/FastlaneDemo/tree/master/FastlaneUpToPgyer" target="_blank" rel="noopener">demo地址</a></h2><h2 id="定义lane"><a href="#定义lane" class="headerlink" title="定义lane"></a>定义lane</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lane :archive do</span><br><span class="line"></span><br><span class="line">  puts &quot;请输入版本描述信息：&quot;</span><br><span class="line">  desc &#x3D; STDIN.gets</span><br><span class="line"></span><br><span class="line">  build_app(export_method: &quot;ad-hoc&quot;, output_directory: &quot;ipa&quot;)</span><br><span class="line">  pgyer(api_key: &quot;a215682d481d742271b61aabfe1baffe&quot;, user_key: &quot;06c794bc27fbe97b626a3a21f12419f5&quot;,password: &quot;12345678&quot;, update_description: &quot;#&#123;desc&#125;&quot;)</span><br><span class="line">  </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<h2 id="遇到问题，"><a href="#遇到问题，" class="headerlink" title="遇到问题，"></a>遇到问题，</h2><p>1 、fastlane 版本太低，<br><code>sudo gem install fastlane</code></p>
+<p>2、项目需要指定 <code>team</code></p>
+<p>3、更新profile后打包还是用旧的证书</p>
+<ul>
+<li>~/资源库/MobileDevice/Provisioning Profiles 删掉多余的证书</li>
+<li>添加 <code>export_xcargs: &quot;-allowProvisioningUpdates&quot;</code></li>
+<li><a href="https://docs.fastlane.tools/codesigning/xcode-project/" target="_blank" rel="noopener">参考地址</a><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lane :archive do</span><br><span class="line"></span><br><span class="line">  puts &quot;请输入版本描述信息：&quot;</span><br><span class="line">  desc &#x3D; STDIN.gets</span><br><span class="line"></span><br><span class="line">  build_app(export_method: &quot;ad-hoc&quot;, export_xcargs: &quot;-allowProvisioningUpdates&quot;, output_directory: &quot;~&#x2F;Desktop&#x2F;outputAPI&quot;)</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">  pgyer(api_key: &quot;a215682d481d742271b61aabfe1baffe&quot;, user_key: &quot;06c794bc27fbe97b626a3a21f12419f5&quot;,password: &quot;12345678&quot;, update_description: &quot;#&#123;desc&#125;&quot;)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="查看更多build-app的输入信息"><a href="#查看更多build-app的输入信息" class="headerlink" title="查看更多build_app的输入信息"></a>查看更多build_app的输入信息</h2><p><code>fastlane action build_app</code></p>
+]]></content>
+      <categories>
+        <category>持续构建</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>git</title>
+    <url>/2020/03/26/git/</url>
+    <content><![CDATA[<h2 id="如何修改最近一次提交注释信息"><a href="#如何修改最近一次提交注释信息" class="headerlink" title="如何修改最近一次提交注释信息"></a>如何修改最近一次提交注释信息</h2><p>1、修改本地最近一次提交记录,进入<code>vim</code>编辑模式</p>
+<p><code>git commit --amend</code><br>或<br><code>git commit --amend -m &quot;remove helloworld lane&quot;</code></p>
+<img src="/2020/03/26/git/WX20200321.png" class="" width="1">
+
+<p>2、强制覆盖远程最近一次提交记录(特别注意远程其他人是否已经提交了代码)</p>
+<p><code>git push origin master --force</code></p>
+<img src="/2020/03/26/git/WX20200322.png" class="" width="2">
+
+<h2 id="不小心提交了重要信息到远程仓库，如何抢救"><a href="#不小心提交了重要信息到远程仓库，如何抢救" class="headerlink" title="不小心提交了重要信息到远程仓库，如何抢救"></a>不小心提交了重要信息到远程仓库，如何抢救</h2><p>1、我们假设<code>remove helloworld lane</code>这次提交有重要信息，他已经在远程分支了。</p>
+<img src="/2020/03/26/git/WX20200323.png" class="" width="3">
+
+<p>2、我们需要在这条分支的前一次提交那里，选择重置，软合并。</p>
+<img src="/2020/03/26/git/WX20200324.png" class="" width="4">
+
+<img src="/2020/03/26/git/WX20200325.png" class="" width="5">
+
+<p>3、强制覆盖远程最近一次提交记录(特别注意远程其他人是否已经提交了代码)<br><code>git push origin master --force</code></p>
+<h2 id="撤销未发布的提交"><a href="#撤销未发布的提交" class="headerlink" title="撤销未发布的提交"></a>撤销未发布的提交</h2><p>命令行：<code>git reset —hard HEAD^</code> 或者 <code>git reset —hard @{1}</code><br>sourcetree: 右击—》将master重置到这次提交-》混合合并</p>
+<h2 id="查看文件记录和状态"><a href="#查看文件记录和状态" class="headerlink" title="查看文件记录和状态"></a>查看文件记录和状态</h2><p><code>git status —short</code><br><code>git status —short —gitignored</code></p>
+<h2 id="查看修订版本的差异"><a href="#查看修订版本的差异" class="headerlink" title="查看修订版本的差异"></a>查看修订版本的差异</h2><p> 1、比较工作区和暂存区的差别<br><code>git diff</code></p>
+<p>2、查看暂存区和提交的差别<br><code>git diff —staged (git diff —cached)</code></p>
+<p>3、查看工作区和提交的区别<br><code>git diff HEAD</code></p>
+<h2 id="一个仓库拥有多个分支"><a href="#一个仓库拥有多个分支" class="headerlink" title="一个仓库拥有多个分支"></a>一个仓库拥有多个分支</h2><p><code>git checkout --orphan gh-pages</code></p>
+<h2 id="分支使用"><a href="#分支使用" class="headerlink" title="分支使用"></a>分支使用</h2><p>新建：<code>git branch testing</code><br>切换：<code>git checkout testing</code><br>切换匿名分支：<code>git checkout —detach 3ead34d</code><br>从匿名分支回到原来分支： <code>git checkout -</code></p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
     <title>cordova简单使用</title>
     <url>/2020/03/26/cordova%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[]]></content>
