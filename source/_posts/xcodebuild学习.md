@@ -34,9 +34,9 @@ categories: 持续构建
 - 3) 打包，然后就可以在`build`文件中看到api
 > `xcodebuild -exportArchive -archivePath build/TravisCIDemo.xcarchive -exportPath build -exportOptionsPlist export.plist`
 
-{% asset_img WX20200329-212036@2x.png WX20200329-212036@2x %}
+{% asset_img WX202003291.png 1 %}
 
-{% asset_img WX20200329-212204@2x.png WX20200329-212204@2x %}
+{% asset_img WX202003292.png 2 %}
 
 - Build Products Path
 `xcodebuild -workspace TravisCIDemo.xcworkspace -scheme TravisCIDemo SYMROOT="/Users/yujinhai/Desktop/GitProject/travisCIDemo"`
