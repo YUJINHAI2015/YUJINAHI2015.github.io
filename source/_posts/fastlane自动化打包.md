@@ -32,6 +32,7 @@ end
 3、更新profile后打包还是用旧的证书
 -  ~/资源库/MobileDevice/Provisioning Profiles 删掉多余的证书
 -  添加 `export_xcargs: "-allowProvisioningUpdates"`
+- [参考地址](https://docs.fastlane.tools/codesigning/xcode-project/)
 ```
 lane :archive do
 
@@ -45,3 +46,6 @@ lane :archive do
 end
 
 ```
+
+## 查看更多build_app的输入信息
+`fastlane action build_app`
