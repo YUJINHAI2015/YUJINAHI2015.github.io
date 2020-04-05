@@ -1,5 +1,5 @@
 ---
-title: useSearch
+title: hexo添加搜索
 date: 2020-03-20 23:12:09
 categories: hexo
 ---

@@ -1,5 +1,5 @@
 ---
-title: use categories
+title: hexo 添加分类
 date: 2020-03-20 22:35:03
 categories: hexo
 ---
