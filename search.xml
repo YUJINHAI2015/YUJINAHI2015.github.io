@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>helloworld</title>
+    <url>/2020/04/06/helloworld/</url>
+    <content><![CDATA[<p>sssd<br>#inods<br>dosewfo</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Express 应用程序生成器</title>
+    <url>/2020/04/02/Express%20%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%94%9F%E6%88%90%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="Express-应用程序生成器"><a href="#Express-应用程序生成器" class="headerlink" title="Express 应用程序生成器"></a>Express 应用程序生成器</h1><p><a href="https://www.expressjs.com.cn/starter/generator.html" target="_blank" rel="noopener">Express</a></p>
+<ul>
+<li><code>sudo npm install -g express-generator</code></li>
+</ul>
+<blockquote>
+<p>express -h </p>
+<p><code>zsh: command not found: express</code></p>
+<p>1、<code>open ~/.bash_profile</code></p>
+<p>2、添加<code>export PATH=$PATH:$HOME/.npm-global/bin:$PATH</code> </p>
+<p>3、<code>source ~/.bash_profile</code></p>
+<p>4、查看是否添加成功<code>echo $PATH</code></p>
+<p>5、<code>express -h</code></p>
+</blockquote>
+<h2 id="生成模板"><a href="#生成模板" class="headerlink" title="生成模板"></a>生成模板</h2><p>1、<code>express --view-pug myapp</code></p>
+<p>2、<code>cd myapp</code></p>
+<p>3、<code>npm install</code></p>
+<p>4、<code>DEBUG=myapp:* npm start</code></p>
+]]></content>
+      <categories>
+        <category>nodejs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Node.js 模块</title>
+    <url>/2020/04/02/Node.js%20%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<h2 id="Node-js-模块"><a href="#Node-js-模块" class="headerlink" title="Node.js 模块"></a>Node.js 模块</h2><ul>
+<li><p><code>npm init</code></p>
+</li>
+<li><p><code>npm install &lt;package_name&gt;</code></p>
+</li>
+<li><p>创建一个test.js文件，并require包</p>
+</li>
+<li><p>导入代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">exports.printMsg = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"This is a message from the demo package"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>node test.js</code></p>
+</li>
+</ul>
+<h2 id="注册npm账号-发布自己的代码仓库"><a href="#注册npm账号-发布自己的代码仓库" class="headerlink" title="注册npm账号,发布自己的代码仓库"></a>注册npm账号,发布自己的代码仓库</h2><ul>
+<li><code>npm adduser</code></li>
+<li><code>npm login</code></li>
+<li><code>npm whoami</code></li>
+<li><code>https://www.npmjs.com/~yujinhai</code></li>
+<li>发布到自己的仓库：<code>npm publish</code> (一定要确保自己的仓库名称唯一)</li>
+<li>更新版本：<code>npm version &lt;update_type&gt;</code>，该命令会改变package.json文件的版本号，并且为git仓库添加tag。 然后重新发布<code>npm publish</code></li>
+</ul>
+<h2 id="使用自己发布的仓库"><a href="#使用自己发布的仓库" class="headerlink" title="使用自己发布的仓库"></a>使用自己发布的仓库</h2><ul>
+<li><p>创建一个文件夹：<code>mkdir myTest</code></p>
+</li>
+<li><p><code>cd myTest</code></p>
+</li>
+<li><p><code>npm init</code></p>
+</li>
+<li><p><code>npm install &lt;刚才上传的包&gt;</code></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>nodejs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>fastlaneMatch</title>
     <url>/2020/04/02/fastlaneMatch/</url>
     <content><![CDATA[<h2 id="想解决问题：1、能够自动下载最新的profiles文件，2、能够自动添加新的设备"><a href="#想解决问题：1、能够自动下载最新的profiles文件，2、能够自动添加新的设备" class="headerlink" title="想解决问题：1、能够自动下载最新的profiles文件，2、能够自动添加新的设备"></a>想解决问题：1、能够自动下载最新的<code>profiles</code>文件，2、能够自动添加新的设备</h2><h2 id="手动管理证书"><a href="#手动管理证书" class="headerlink" title="手动管理证书"></a>手动管理证书</h2><p>1、在苹果开发中心，下载 <code>certificate (.cer)</code>，并安装到本地<br>2、下载<code>provisioning profile (.mobileprovision)</code>，并安装到本地<br>3、勾选Xcode里面的Automatic选项，然后打包。</p>
@@ -27,6 +97,95 @@
 ]]></content>
       <categories>
         <category>持续构建</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Node.js 模块</title>
+    <url>/2020/04/02/nodejs%20%E6%A8%A1%E5%9D%97/</url>
+    <content><![CDATA[<h2 id="nodejs-模块介绍"><a href="#nodejs-模块介绍" class="headerlink" title="nodejs 模块介绍"></a>nodejs 模块介绍</h2><p>1、Nodejs 自带服务器，不需要像其他语言要引入http服务器</p>
+<p>2、exports </p>
+<blockquote>
+<p>把公共的功能抽离成为一个单独的js文件作为一个模块。</p>
+<p>模块里面的<code>方法或者属性</code>是没办法访问的，要通过exports关键字</p>
+<p>使用的时候用require(模块名称)</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'get method'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.get=<span class="keyword">get</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="keyword">get</span>:function () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'get method'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    post:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'post method'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">exports.obj=obj;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3、自定义的模块放到<code>node_modules</code>里面</p>
+<blockquote>
+<p>默认可以通过<em>相对路径</em>找到<code>index.js</code>文件。</p>
+<p>如果文件不是叫<code>index.js</code>，可以通过<code>npm init --yes</code> 生成描述文件。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>nodejs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>npm 安装并管理版本</title>
+    <url>/2020/04/02/npm%20%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E5%8C%85/</url>
+    <content><![CDATA[<h2 id="npm-安装并管理版本"><a href="#npm-安装并管理版本" class="headerlink" title="npm 安装并管理版本"></a>npm 安装并管理版本</h2><ul>
+<li>如果是作为命令行工具使用，就安装全局包</li>
+<li>安装本地包：<code>npm install &lt;package_name&gt;</code></li>
+<li>安装全局包：<code>npm install -g &lt;package_name&gt;</code></li>
+<li>更新包：<code>npm update /-g &lt;package_name&gt;</code></li>
+<li>卸载包：<code>npm uninstall /-g &lt;package_name&gt;</code></li>
+</ul>
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><ul>
+<li><p>默认安装全部依赖：<code>npm install</code> </p>
+</li>
+<li><p>生产环境：<code>npm install &lt;package_name&gt; --save</code></p>
+</li>
+<li><p>开发环境：<code>npm install &lt;package_name&gt; --save-dev</code></p>
+</li>
+<li><p>直接安装git连接地址：<code>npm install &lt;git remote url&gt;</code></p>
+</li>
+<li><p>用@指定版本：<code>npm install sax@1.0.0</code> <code>npm install sax@&quot;&gt;=0.1.0&lt;0.2.0&quot;</code></p>
+</li>
+<li><p>不触发脚本：<code>npm install sax --ignore-scripts</code></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">  &quot;md5&quot;: &quot;^2.2.1&quot; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>^</code> 表示第一位版本号不变，后面两位取最新<br><code>~</code> 表示前面两位不变，最后一个取最新<br><code>*</code> 表示全部取最新</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>nodejs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>npm 开发工具</title>
+    <url>/2020/04/02/npm%20%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<h2 id="npm-开发工具"><a href="#npm-开发工具" class="headerlink" title="npm 开发工具"></a>npm 开发工具</h2><ul>
+<li><p>curl 工具</p>
+<blockquote>
+<p>进行普通的网络请求，能够打印网络请求信息：<code>curl -v http://localhost:3000/todos</code></p>
+<p>或者直接POST: <code>curl -v -X POST http://localhost:3000/todos -d &#39;content=4444&#39;</code></p>
+</blockquote>
+</li>
+<li><p>网页中拷贝curl命令</p>
+</li>
+<li><img src="/Users/yujinhai/Library/Application Support/typora-user-images/image-20200406232515099.png" alt="image-20200406232515099" style="zoom:50%;" />
+</li>
+<li><p>常用参数： -H 表示要加上请求头  -X 表示要加上请求方法  -d表示要加上请求数据  -v 显示详细的信息</p>
+</li>
+<li><p><code>man curl</code></p>
+</li>
+<li><p>-d @hello.json 传入json文件</p>
+</li>
+<li><p>postman</p>
+</li>
+<li><p>一般命令行后面加上 -h 能够查看帮助</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>nodejs</category>
       </categories>
   </entry>
   <entry>
