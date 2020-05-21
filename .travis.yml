@@ -1,7 +1,6 @@
 #https://juejin.im/post/5a1fa30c6fb9a045263b5d2a
 
 language: node_js # 设置语言
-sudo: required # 需要sudo权限
 node_js: stable # 设置相应版本
 
 # 指定缓存模块，可选。缓存可加快编译速度。
