@@ -103,29 +103,29 @@ platform :ios do
   desc "Description of what the lane does"
   lane :useMatch do
 
-	register_devices(devices_file: "./devices.txt")
+    register_devices(devices_file: "./devices.txt")
 
-	# https://docs.fastlane.tools/actions/match/
-	match(
-		git_url: "https://gitee.com/yujinhai/HowToUseMatch.git",
-		type: "adhoc",
-		#readonly: true,
-		force_for_new_devices: true
-	)    
+    # https://docs.fastlane.tools/actions/match/
+    match(
+        git_url: "https://gitee.com/yujinhai/HowToUseMatch.git",
+        type: "adhoc",
+        #readonly: true,
+        force_for_new_devices: true
+    )    
 
-	# https://docs.fastlane.tools/actions/build_app/
-  	build_app(
-		export_method: "ad-hoc",
-	 	export_xcargs: "-allowProvisioningUpdates", 
-		output_directory: "~/Desktop/outputAPI"
-	)
-	# https://www.pgyer.com/doc/view/fastlane
-	pgyer(
-		api_key: "a215682d481d742271b61aabfe1baffe", 
-		user_key: "06c794bc27fbe97b626a3a21f12419f5",
-		password: "123456", 
-		update_description: "ss"
-	)
+    # https://docs.fastlane.tools/actions/build_app/
+      build_app(
+        export_method: "ad-hoc",
+         export_xcargs: "-allowProvisioningUpdates", 
+        output_directory: "~/Desktop/outputAPI"
+    )
+    # https://www.pgyer.com/doc/view/fastlane
+    pgyer(
+        api_key: "a215682d481d742271b61aabfe1baffe", 
+        user_key: "06c794bc27fbe97b626a3a21f12419f5",
+        password: "123456", 
+        update_description: "ss"
+    )
 
   end
 end
