@@ -2,7 +2,7 @@
 
 language: node_js # 设置语言
 #sudo: required # 需要sudo权限
-node_js: stable # 设置相应版本
+node_js: 12.14 # 设置相应版本
 os:
  - osx
 # 指定缓存模块，可选。缓存可加快编译速度。
