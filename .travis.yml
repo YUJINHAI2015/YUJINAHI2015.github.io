@@ -32,10 +32,10 @@ install:
 script:
     #不知道为什么script要用4个空格，不能用tab
     #保留发布历史记录
-    - git clone --depth 1 --branch=master https://github.com/YUJINHAI2015/yujinhai2015.github.io.git .deploy_git
-    - cd .deploy_git
-    - find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
-    - cd ../
+#    - git clone --depth 1 --branch=master https://github.com/YUJINHAI2015/yujinhai2015.github.io.git .deploy_git
+#    - cd .deploy_git
+#    - find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
+#    - cd ../
     #发布
     - hexo clean # 清除
     - hexo generate # 生成
