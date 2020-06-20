@@ -104,7 +104,7 @@ deploy:
   # 分支是 master 这里放在编译后的文件
   branch: master
   # repo 里面有个字段 github_token 是在Travis CI 里面添加token规定的。
-  repo: https://github_token@github.com/YUJINHAI2015/YUJINHAI2015.github.io.git
-#  repo: git@github.com:YUJINHAI2015/yujinhai2015.github.io.git
+  #repo: https://github_token@github.com/YUJINHAI2015/YUJINHAI2015.github.io.git
+  repo: git@github.com:YUJINHAI2015/yujinhai2015.github.io.git
 
 
