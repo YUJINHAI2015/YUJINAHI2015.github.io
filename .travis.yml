@@ -1,7 +1,7 @@
 #https://juejin.im/post/5a1fa30c6fb9a045263b5d2a
 
 language: node_js # 设置语言
-#sudo: required # 需要sudo权限
+sudo: required # 需要sudo权限
 node_js: stable # 设置相应版本
 
 # 指定缓存模块，可选。缓存可加快编译速度。
@@ -30,6 +30,11 @@ install:
 
 script:
     #不知道为什么script要用4个空格，不能用tab
+    #保留发布历史记录
+    - git clone --depth 1 --branch=master https://github.com/YUJINHAI2015/yujinhai2015.github.io.git .deploy_git
+    - cd .deploy_git
+    - find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
+    - cd ../
     #发布
     - hexo clean # 清除
     - hexo generate # 生成
